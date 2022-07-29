@@ -23,7 +23,10 @@ class AuthorResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\TextInput::make('email')->email()->required(),
+                Forms\Components\TextInput::make('github')->nullable(),
+                Forms\Components\TextInput::make('twitter')->nullable(),
             ]);
     }
 
@@ -31,13 +34,17 @@ class AuthorResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('github'),
+                Tables\Columns\TextColumn::make('twitter'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
