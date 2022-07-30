@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
-use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Author;
 use App\Models\Category;
 use App\Models\Post;
@@ -12,8 +11,6 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PostResource extends Resource
 {
@@ -51,11 +48,11 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-//                 name
-// content
-// image
-// author_id
-// category_id
+                //                 name
+                // content
+                // image
+                // author_id
+                // category_id
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('content'),
                 Tables\Columns\TextColumn::make('authors.name'),
@@ -70,14 +67,14 @@ class PostResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -85,5 +82,5 @@ class PostResource extends Resource
             'create' => Pages\CreatePost::route('/create'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
-    }    
+    }
 }

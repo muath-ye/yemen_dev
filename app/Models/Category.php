@@ -19,7 +19,6 @@ class Category extends Model
         'visibility',
     ];
 
-    
     public function posts()
     {
         return $this->hasMany(Post::class);
