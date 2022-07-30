@@ -20,4 +20,9 @@ class Author extends Model
         'github',
         'twitter',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
