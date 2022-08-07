@@ -12,11 +12,11 @@ class StatisticResource extends BaseWidget
      */
     public function getVal()
     {
-        return rand(14, 344);
+        return mt_rand(14, 344);
     }
     public function getChart()
     {
-        return [rand(0, 20),rand(0, 20),rand(0, 20),rand(0, 20),rand(0, 20)];
+        return [mt_rand(0, 20),mt_rand(0, 20),mt_rand(0, 20),mt_rand(0, 20),mt_rand(0, 20)];
     }
 
     protected function getCards(): array
