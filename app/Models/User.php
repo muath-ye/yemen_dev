@@ -6,11 +6,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public function canAccessFilament(): bool
+    {
+        // With str_ends_with & str_starts_with you can check if the user has access to the filament
+        return str_ends_with($this->email, '.com') && $this->hasVerifiedEmail();
+    }
 
     /**
      * The attributes that are mass assignable.
